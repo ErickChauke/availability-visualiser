@@ -7,8 +7,10 @@ left off the chart.
 
 Two chart styles are produced from the same data so the presentation style can be chosen:
 
-- A panel view, one small trend per service, recommended as the default because a weak month
-  stands out as a dip against that service's own year to date rather than being averaged away.
+- An executive tile view, one panel per service, recommended as the default. Tiles are ordered with
+  the lowest current month first so the services worth attention lead, each tile carries its monthly
+  line and year to date, the lowest monthly dip is marked in red, and the vertical axis never goes
+  above 100 percent while each tile scales itself so a small dip stays visible.
 - A grouped columns view, which compares services well early in the year.
 
 ## Project structure
