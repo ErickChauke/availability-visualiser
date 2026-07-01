@@ -7,11 +7,14 @@ left off the chart.
 
 Two chart styles are produced from the same data so the presentation style can be chosen:
 
-- An executive tile view, one panel per service, recommended as the default. Tiles are ordered with
-  the lowest current month first so the services worth attention lead, each tile carries its monthly
-  line and year to date, the lowest monthly dip is marked in red, and the vertical axis never goes
-  above 100 percent while each tile scales itself so a small dip stays visible.
-- A grouped columns view, which compares services well early in the year.
+- An executive tile view, one panel per service, recommended as the default. It shows a rolling
+  window of months (12 by default) stitched across the financial-year boundary, so each tile carries
+  a real trend. Tiles are ordered with the lowest current month first, each shows its monthly line,
+  its year to date, and its target line, any month below target is marked in red, a vertical line
+  marks the start of the new financial year in April, and the vertical axis never goes above 100
+  percent while each tile scales itself so a dip stays visible.
+- A grouped columns view for the current financial year, with each service's target drawn and any
+  below-target bar flagged, useful for a straight month-to-month comparison.
 
 ## Project structure
 
@@ -31,7 +34,7 @@ Two chart styles are produced from the same data so the presentation style can b
    vertical axis range all adapt to the data.
 
 The config cell is the single point of change. It also lets you chart a specific fiscal year
-instead of the latest one.
+instead of the latest one, and set how many months the rolling tile view shows.
 
 ## Dependencies
 
