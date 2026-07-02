@@ -1,25 +1,28 @@
 # DSS Availability Visualiser
 
-A single Jupyter notebook that turns the monthly DSS availability workbook into one slide-ready
-chart. For the current fiscal year it shows each service's monthly availability from April to the
-latest month, with the year to date alongside. Per-service targets differ and are deliberately
-left off the chart.
+A single Jupyter notebook that turns the monthly DSS availability workbook into slide-ready images.
+It shows each service's availability over a rolling window of months with the year to date and the
+target alongside, and a one-glance summary of the current month.
 
-Two chart styles are produced from the same data so the presentation style can be chosen:
+Three images are produced from the same data:
 
 - An executive tile view, one panel per service, recommended as the default. It shows a rolling
   window of months (12 by default) stitched across the financial-year boundary, so each tile carries
-  a real trend. Tiles are ordered with the lowest current month first, each shows its monthly line,
-  its year to date, and its target line, any month below target is marked in red, a vertical line
-  marks the start of the new financial year in April, and the vertical axis never goes above 100
-  percent while each tile scales itself so a dip stays visible.
+  a real trend. Tiles are ordered with the lowest current month first. Each tile has its own vertical
+  scale capped at 100 percent, a dotted target line, a red triangle on any month below target, a red
+  circle with a white centre on the lowest month (the triangle is kept where the lowest month is also
+  a breach), a red shaded band where the year to date runs below target, and a vertical line marking
+  the start of the new financial year in April.
 - A grouped columns view for the current financial year, with each service's target drawn and any
   below-target bar flagged, useful for a straight month-to-month comparison.
+- An executive summary table of the current month: counters for on target, watch and at risk, then a
+  row per service with status, availability, year to date, margin over target and the target, sorted
+  closest to target first. Intended to replace the old spreadsheet table on the slide.
 
 ## Project structure
 
-- `notebook.ipynb` - the notebook, built as setup, ingestion, cleaning, the two visualisations,
-  and a summary
+- `notebook.ipynb` - the notebook, built as setup, ingestion, cleaning, the tile view, the columns
+  view, the executive summary, and a closing summary
 - `notebook.html` - a shareable HTML export that follows the operating system light or dark theme
 - `outputs/` - generated figures, named after the source file stem so different datasets never
   overwrite each other
