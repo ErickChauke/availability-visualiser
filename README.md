@@ -62,6 +62,29 @@ pip install pandas openpyxl matplotlib nbconvert ipykernel
 Open `notebook.ipynb` in VS Code or Jupyter, select the Python environment as the kernel, and run
 all cells. Each visualisation cell saves its figure to `outputs/`.
 
+## Run without Jupyter
+
+`availability.py` is a standalone command-line version of the notebook. It produces the same three
+images and is meant for a machine that has only Python installed, with no notebook environment.
+
+1. Put the monthly workbook in the same folder as the script.
+2. Run it:
+
+   ```
+   python availability.py
+   ```
+
+On the first run it installs anything it needs (pandas, matplotlib, openpyxl) automatically. It picks
+up the workbook beside it even when the file name changes month to month. If there is more than one
+workbook to choose from, pass the one you want:
+
+```
+python availability.py "path/to/workbook.xlsx"
+```
+
+The figures are written to `outputs/` next to the script, named after the source file stem, exactly
+as the notebook does.
+
 ## Regenerating the HTML export
 
 The export executes the notebook, writes `notebook.html`, and injects a dark-mode aware style.
