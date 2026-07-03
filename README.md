@@ -23,7 +23,7 @@ Three images are produced from the same data:
 
 - `notebook.ipynb` - the notebook, built as setup, ingestion, cleaning, the tile view, the columns
   view, the executive summary, and a closing summary
-- `notebook.html` - a shareable HTML export that follows the operating system light or dark theme
+- `notebook.html` - a shareable HTML export of the notebook
 - `outputs/` - generated figures, named after the source file stem so different datasets never
   overwrite each other
 - `data/` - input files (gitignored)
@@ -46,15 +46,10 @@ instead of the latest one, and set how many months the rolling tile view shows.
 - openpyxl (Excel reading)
 - matplotlib
 
-For the HTML export, additionally:
-
-- nbconvert
-- ipykernel
-
 Install them with:
 
 ```
-pip install pandas openpyxl matplotlib nbconvert ipykernel
+pip install pandas openpyxl matplotlib
 ```
 
 ## How to run
@@ -85,20 +80,14 @@ python availability.py "path/to/workbook.xlsx"
 The figures are written to `outputs/` next to the script, named after the source file stem, exactly
 as the notebook does.
 
-## Regenerating the HTML export
+## Updating the HTML export
 
-The export executes the notebook, writes `notebook.html`, and injects a dark-mode aware style.
-That style does not survive a fresh conversion, so it is always re-applied. A one-step helper that
-does both lives in the gitignored `data/` folder:
+`notebook.html` is a shareable export of the notebook. The simplest way to refresh it is from
+Jupyter or VS Code: open the notebook and use the built-in export, File then Save and Export
+Notebook As then HTML (in classic Jupyter, File then Download as then HTML).
 
-```
-python data/build_html.py
-```
-
-Or run the steps manually:
+Or run it from the command line:
 
 ```
 python -m nbconvert --to html --execute notebook.ipynb --output notebook.html
 ```
-
-and then re-apply the dark-mode style block to the head of `notebook.html`.
